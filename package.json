@@ -43,7 +43,7 @@
     "build": "rc-tools run build",
     "gh-pages": "rc-tools run gh-pages",
     "start": "rc-tools run server",
-    "compile": "rc-tools run compile --babel-runtime",
+    "compile": "rc-tools run compile --babel-runtime && node removelocale",
     "pub": "rc-tools run pub --babel-runtime",
     "lint": "rc-tools run lint",
     "test": "jest",
