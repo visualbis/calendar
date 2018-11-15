@@ -8,8 +8,13 @@ const COL = 3;
 
 function chooseMonth(month) {
   const next = this.state.value.clone();
-  next.month(month);
-  this.setAndSelectValue(next);
+  if(this.props.type === "yqm" ||this.props.type === "yqmm" ){
+    this.props.onQuarterSelect(next.year(),month);
+  }else{
+    next.month(month);
+    this.setAndSelectValue(next);
+  }
+ 
 }
 
 function noop() {
@@ -39,6 +44,43 @@ class MonthTable extends Component {
     });
     this.props.onSelect(value);
   }
+  arrangeMonths(months,type,monthflow){
+    const quartertype = ["yqm","yqmm"];
+    const quarter =[
+      {value: 12, content: "Q1", title: "Q1"},
+      {value: 13, content: "Q2", title: "Q2"},
+      {value: 14, content: "Q3", title: "Q3"},
+      {value: 15, content: "Q4", title: "Q4"}
+    ];   
+    const dMonths = [];
+    if(monthflow == "vertical"){
+      months.forEach(function(item,index){
+        item.forEach(function(mitem,mIndex){
+          if(!dMonths[mIndex]){
+            dMonths[mIndex]=[];             
+           }
+           dMonths[mIndex].push(mitem);
+         });
+       });
+       if(quartertype.indexOf(type)>-1){         
+        dMonths.unshift(quarter);
+       }    
+       while(months.length > 0) {        
+        months.pop();
+       }
+    dMonths.forEach(function(item,index){
+      months.push(item);
+    });
+    }else{
+      if(quartertype.indexOf(type)>-1){   
+        months.forEach(function(item,index){
+          item.unshift(quarter[index]);
+        });
+      }
+    }
+  
+
+  }
 
   months() {
     const value = this.state.value;
@@ -65,9 +107,10 @@ class MonthTable extends Component {
     const props = this.props;
     const value = this.state.value;
     const today = getTodayTime(value);
-    const months = this.months();
+    let months = this.months();
     const currentMonth = value.month();
     const { prefixCls, locale, contentRender, cellRender } = props;
+    this.arrangeMonths(months,props.type,props.monthflow);
     const monthsEls = months.map((month, index) => {
       const tds = month.map(monthData => {
         let disabled = false;
@@ -76,11 +119,19 @@ class MonthTable extends Component {
           testValue.month(monthData.value);
           disabled = props.disabledDate(testValue);
         }
+        let ismSelected = false;
+        let isySelected = false;
+        if(props.selectedvalue){         
+          if(props.selectedvalue[ value._d.getFullYear()] && props.selectedvalue[value._d.getFullYear()].indexOf(monthData.value)>-1){
+            ismSelected = true;
+            isySelected = true;
+          }
+        }
         const classNameMap = {
           [`${prefixCls}-cell`]: 1,
           [`${prefixCls}-cell-disabled`]: disabled,
-          [`${prefixCls}-selected-cell`]: monthData.value === currentMonth,
-          [`${prefixCls}-current-cell`]: today.year() === value.year() &&
+          [`${prefixCls}-selected-cell`]: ismSelected,//monthData.value === currentMonth,
+          [`${prefixCls}-current-cell`]:isySelected// today.year() === value.year() &&
           monthData.value === today.month(),
         };
         let cellEl;

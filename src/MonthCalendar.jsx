@@ -82,10 +82,14 @@ const MonthCalendar = createReactClass({
             mode={mode}
             value={value}
             locale={props.locale}
+            monthflow={this.props.monthflow}
+            selectedvalue={this.props.selectedvalue}
+            type={this.props.type}
             disabledMonth={props.disabledDate}
             monthCellRender={props.monthCellRender}
             monthCellContentRender={props.monthCellContentRender}
             onMonthSelect={this.onSelect}
+            onQuarterSelect={this.props.onQuarterSelect}
             onValueChange={this.setValue}
             onPanelChange={this.handlePanelChange}
           />

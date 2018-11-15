@@ -201,6 +201,10 @@ const Picker = createReactClass({
       popup={this.getCalendarElement()}
       popupAlign={align}
       builtinPlacements={placements}
+      monthflow={this.props.monthflow}
+      type={this.props.type}
+      selectedvalue={this.props.selectedvalue}
+      onQuarterSelect={this.props.onQuarterSelect}
       popupPlacement={placement}
       action={(disabled && !state.open) ? [] : ['click']}
       destroyPopupOnHide

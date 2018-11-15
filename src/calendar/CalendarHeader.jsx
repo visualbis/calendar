@@ -151,8 +151,12 @@ const CalendarHeader = createReactClass({
         <MonthPanel
           locale={locale}
           defaultValue={value}
+          monthflow={this.props.monthflow}
+          type={this.props.type}
+          selectedvalue={this.props.selectedvalue}
           rootPrefixCls={prefixCls}
           onSelect={this.onMonthSelect}
+          onQuarterSelect={this.props.onQuarterSelect}
           onYearPanelShow={() => this.showYearPanel('month')}
           disabledDate={disabledMonth}
           cellRender={props.monthCellRender}

@@ -105,6 +105,10 @@ const MonthPanel = createReactClass({
             <MonthTable
               disabledDate={props.disabledDate}
               onSelect={this.setAndSelectValue}
+              monthflow={this.props.monthflow}
+              onQuarterSelect={this.props.onQuarterSelect}
+              type={this.props.type}
+              selectedvalue ={this.props.selectedvalue}
               locale={locale}
               value={value}
               cellRender={cellRender}
