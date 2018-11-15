@@ -130,9 +130,8 @@ class MonthTable extends Component {
         const classNameMap = {
           [`${prefixCls}-cell`]: 1,
           [`${prefixCls}-cell-disabled`]: disabled,
-          [`${prefixCls}-selected-cell`]: ismSelected,//monthData.value === currentMonth,
-          [`${prefixCls}-current-cell`]:isySelected// today.year() === value.year() &&
-          monthData.value === today.month(),
+          [`${prefixCls}-selected-cell`]: ismSelected,
+          [`${prefixCls}-current-cell`]:isySelected
         };
         let cellEl;
         if (cellRender) {
