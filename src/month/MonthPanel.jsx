@@ -107,6 +107,7 @@ const MonthPanel = createReactClass({
               onSelect={this.setAndSelectValue}
               monthflow={this.props.monthflow}
               onQuarterSelect={this.props.onQuarterSelect}
+              calendarprops = {this.props.calendarprops}
               type={this.props.type}
               selectedvalue ={this.props.selectedvalue}
               locale={locale}

@@ -90,6 +90,7 @@ const MonthCalendar = createReactClass({
             monthCellContentRender={props.monthCellContentRender}
             onMonthSelect={this.onSelect}
             onQuarterSelect={this.props.onQuarterSelect}
+            calendarprops = {this.props.calendarprops}
             onValueChange={this.setValue}
             onPanelChange={this.handlePanelChange}
           />
