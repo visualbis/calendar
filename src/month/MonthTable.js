@@ -78,7 +78,7 @@ class MonthTable extends Component {
         });
       }
     }
-    debugger;
+    
     if(isfiscal){
       var mindex = [0,1,2,3,4,5,6,7,8,9,10,11];
       var msplice = mindex.splice(2);
@@ -139,6 +139,7 @@ class MonthTable extends Component {
     const currentMonth = value.month();
     const { prefixCls, locale, contentRender, cellRender } = props;
     this.arrangeMonths(months,props.calendarprops.type,props.calendarprops.monthflow,props.calendarprops.enablefiscal);
+    
     const monthsEls = months.map((month, index) => {
       const tds = month.map(monthData => {
         let disabled = false;
@@ -171,7 +172,7 @@ class MonthTable extends Component {
           if (contentRender) {
             const currentValue = value.clone();
             currentValue.month(monthData.value);
-            content = contentRender(currentValue, locale);
+            content = contentRender(currentValue, locale,monthData.value);
           } else {
             content = monthData.content;
           }
