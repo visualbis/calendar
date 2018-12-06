@@ -8,7 +8,7 @@ const COL = 3;
 
 function chooseMonth(month) {
   const next = this.state.value.clone();
-  if(this.props.calendarprops.type === "yqm" ||this.props.calendarprops.type === "yqmm" ){
+  if(this.props.calendarprops.type === "yqm" ||this.props.calendarprops.type === "yqmm" || this.props.calendarprops.type === "ym"){
     this.props.onQuarterSelect(next.year(),month);
   }else{
     next.month(month);
