@@ -146,7 +146,7 @@ class MonthTable extends Component {
         if (props.disabledDate) {
           const testValue = value.clone();
           testValue.month(monthData.value);
-          disabled = props.disabledDate(testValue);
+          disabled = props.disabledDate(testValue,monthData.value);
         }
         let ismSelected = false;
         let isySelected = false;
