@@ -8,7 +8,7 @@ const COL = 3;
 
 function chooseMonth(month) {
   const next = this.state.value.clone();
-  if(this.props.type === "yqm" ||this.props.type === "yqmm" ){
+  if(this.props.calendarprops.type === "yqmm" || this.props.calendarprops.type === "ymm"){
     this.props.onQuarterSelect(next.year(),month);
   }else{
     next.month(month);
@@ -44,7 +44,7 @@ class MonthTable extends Component {
     });
     this.props.onSelect(value);
   }
-  arrangeMonths(months,type,monthflow){
+  arrangeMonths(months,type,monthflow,isfiscal){
     const quartertype = ["yqm","yqmm"];
     const quarter =[
       {value: 12, content: "Q1", title: "Q1"},
@@ -78,6 +78,34 @@ class MonthTable extends Component {
         });
       }
     }
+    
+    if(isfiscal){
+      var mindex = [0,1,2,3,4,5,6,7,8,9,10,11];
+      var msplice = mindex.splice(2);
+      mindex = msplice.concat(mindex);
+      var marray = []; 
+      months.forEach(function(item,index){
+        item.forEach(function(mitem,mIndex){
+          if(mitem.value<12){
+            var ind = mindex.indexOf(mitem.value);
+            marray[ind] = {};
+            marray[ind]["content"] = mitem.content;
+            marray[ind]["title"] = mitem.title;
+          }
+         
+         });
+       });
+      months.forEach(function(item,index){
+        item.forEach(function(mitem,mIndex){
+          if(mitem.value<12){
+            mitem.content = marray[mitem.value]["content"];     
+            mitem.title = marray[mitem.value]["title"];   
+          }     
+         });
+       });
+    
+
+    }
   
 
   }
@@ -110,19 +138,20 @@ class MonthTable extends Component {
     let months = this.months();
     const currentMonth = value.month();
     const { prefixCls, locale, contentRender, cellRender } = props;
-    this.arrangeMonths(months,props.type,props.monthflow);
+    this.arrangeMonths(months,props.calendarprops.type,props.calendarprops.monthflow,props.calendarprops.enablefiscal);
+    
     const monthsEls = months.map((month, index) => {
       const tds = month.map(monthData => {
         let disabled = false;
         if (props.disabledDate) {
           const testValue = value.clone();
           testValue.month(monthData.value);
-          disabled = props.disabledDate(testValue);
+          disabled = props.disabledDate(testValue,monthData.value);
         }
         let ismSelected = false;
         let isySelected = false;
-        if(props.selectedvalue){         
-          if(props.selectedvalue[ value._d.getFullYear()] && props.selectedvalue[value._d.getFullYear()].indexOf(monthData.value)>-1){
+        if(props.calendarprops.selectedvalue){         
+          if(props.calendarprops.selectedvalue[ value._d.getFullYear()] && props.calendarprops.selectedvalue[value._d.getFullYear()].indexOf(monthData.value)>-1){
             ismSelected = true;
             isySelected = true;
           }
@@ -143,7 +172,7 @@ class MonthTable extends Component {
           if (contentRender) {
             const currentValue = value.clone();
             currentValue.month(monthData.value);
-            content = contentRender(currentValue, locale);
+            content = contentRender(currentValue, locale,monthData.value);
           } else {
             content = monthData.content;
           }
