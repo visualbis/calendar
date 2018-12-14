@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>custom-clear-icon.js - example - rc-calendar@9.7.11</title>
+  <title>custom-clear-icon.js - example - @visualbi/rc-calendar@9.7.12</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,13 +257,13 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
   }
   </script>
-  <link rel="stylesheet" href="../common.css" /><link rel="stylesheet" href="custom-clear-icon.css" />
+  <link rel="stylesheet" href="custom-clear-icon.css" />
 </head>
 
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-calendar@9.7.11</h1>
+      <h1>@visualbi/rc-calendar@9.7.12</h1>
 
       <p>React Calendar</p>
     </div>
@@ -271,11 +271,11 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
     <div class="highlight"><pre><code language="js"><span class="hljs-comment">/* eslint react/no-multi-comp:0, no-console:0 */</span>
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">'rc-calendar/assets/index.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'rc-calendar/assets/index.less'</span>;
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> Calendar <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-calendar'</span>;
-<span class="hljs-keyword">import</span> RangeCalendar <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-calendar/lib/RangeCalendar'</span>;
+<span class="hljs-keyword">import</span> RangeCalendar <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-calendar/src/RangeCalendar'</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker/assets/index.css'</span>;
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">'moment/locale/zh-cn'</span>;
@@ -312,7 +312,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     <span class="hljs-attribute">display:</span> '<span class="hljs-attribute">inline-block</span>',
   }}
   &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">svg</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svg</span>
       <span class="hljs-attribute">viewBox</span>=<span class="hljs-value">"0 0 1024 1024"</span>
       <span class="hljs-attribute">width</span>=<span class="hljs-value">"1em"</span>
       <span class="hljs-attribute">height</span>=<span class="hljs-value">"1em"</span>
@@ -328,7 +328,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   <span class="hljs-keyword">return</span> (
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{mode}</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{</span> <span class="hljs-attribute">marginBottom:</span> '<span class="hljs-attribute">1rem</span>' }}&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>{mode}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">Calendar</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">Calendar</span>
         <span class="hljs-attribute">mode</span>=<span class="hljs-value">{mode}</span>
         <span class="hljs-attribute">clearIcon</span>=<span class="hljs-value">{svg}</span>
       /&gt;</span>
@@ -336,7 +336,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   )</span>;
 });
 
-ReactDOM.render((<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>
+ReactDOM.render((<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>
   <span class="hljs-attribute">style</span>=<span class="hljs-value">{{</span>
     <span class="hljs-attribute">zIndex:</span> <span class="hljs-attribute">1000</span>,
     <span class="hljs-attribute">position:</span> '<span class="hljs-attribute">relative</span>',
@@ -346,13 +346,13 @@ ReactDOM.render((<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-
 &gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{</span> <span class="hljs-attribute">margin:</span> <span class="hljs-attribute">10</span> }}&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">Calendar</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">Calendar</span>
         <span class="hljs-attribute">clearIcon</span>=<span class="hljs-value">{svg}</span>
       /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     {calendars}
     <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{</span> <span class="hljs-attribute">clear:</span> '<span class="hljs-attribute">both</span>' }}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">RangeCalendar</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">RangeCalendar</span>
       <span class="hljs-attribute">showClear</span>
       <span class="hljs-attribute">clearIcon</span>=<span class="hljs-value">{svg}</span>
     /&gt;</span>
