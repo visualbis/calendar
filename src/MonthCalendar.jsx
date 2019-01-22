@@ -73,6 +73,9 @@ const MonthCalendar = createReactClass({
 
   render() {
     const { props, state } = this;
+    if(!props.value && this.props.calendarprops.defaultyear>1000){
+      props.defaultValue._d.setFullYear(this.props.calendarprops.defaultyear);
+    }
     const { mode, value } = state;
     const children = (
       <div className={`${props.prefixCls}-month-calendar-content`}>
