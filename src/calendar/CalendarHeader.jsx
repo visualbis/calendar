@@ -157,6 +157,7 @@ const CalendarHeader = createReactClass({
           rootPrefixCls={prefixCls}
           onSelect={this.onMonthSelect}
           onQuarterSelect={this.props.onQuarterSelect}
+          onRangeSelect={this.props.onRangeSelect}
           calendarprops = {this.props.calendarprops}
           onYearPanelShow={() => this.showYearPanel('month')}
           disabledDate={disabledMonth}
