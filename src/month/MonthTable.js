@@ -148,6 +148,7 @@ class MonthTable extends Component {
           testValue.month(monthData.value);
           disabled = props.disabledDate(testValue,monthData.value);
         }
+       
         let ismSelected = false;
         let isySelected = false;
         if(props.calendarprops.selectedvalue){         
@@ -156,12 +157,28 @@ class MonthTable extends Component {
             isySelected = true;
           }
         }
-        const classNameMap = {
-          [`${prefixCls}-cell`]: 1,
-          [`${prefixCls}-cell-disabled`]: disabled,
-          [`${prefixCls}-selected-cell`]: ismSelected,
-          [`${prefixCls}-current-cell`]:isySelected
-        };
+        var aquarterclass = "";
+        var tdquarterclass = "";
+        var quarterarray = [12,13,14,15];
+        let classNameMap = {};
+        if(quarterarray.indexOf(monthData.value)>-1){
+          aquarterclass = `${prefixCls}-quarter`;
+          tdquarterclass = `${prefixCls}-quarter-cell`;
+           classNameMap = {
+            [`${prefixCls}-quarter-cell`]: 1,
+            [`${prefixCls}-cell-disabled`]: disabled,
+            [`${prefixCls}-selected-quarter-cell`]: ismSelected,
+            [`${prefixCls}-current-quarter-cell`]:isySelected
+          };
+        }else{
+           classNameMap = {
+            [`${prefixCls}-cell`]: 1,
+            [`${prefixCls}-cell-disabled`]: disabled,
+            [`${prefixCls}-selected-cell`]: ismSelected,
+            [`${prefixCls}-current-cell`]:isySelected
+          };
+        }
+     
         let cellEl;
         if (cellRender) {
           const currentValue = value.clone();
@@ -176,13 +193,16 @@ class MonthTable extends Component {
           } else {
             content = monthData.content;
           }
+        
           cellEl = (
             <a className={`${prefixCls}-month`}>
               {content}
             </a>
           );
         }
+        
         return (
+          
           <td
             role="gridcell"
             key={monthData.value}
