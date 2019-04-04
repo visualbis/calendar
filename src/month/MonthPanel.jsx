@@ -121,7 +121,29 @@ height:'30px'
       <div className={prefixCls} style={props.style}>
         <div>       
           <div className={`${prefixCls}-header`}>
-              {showIf(this.props.calendarprops.rangemode && this.props.calendarprops.rangetype == "slider",
+          {showIf(this.props.calendarprops.rangemode && this.props.calendarprops.rangetype !== "slider",
+              <div>
+                <span style={headfontStyle}>From </span>
+                <input
+                style={inputStyle}
+                className={`${prefixCls}-start-year-input`}
+                type="number" min="1000" max="9999"
+                name="rangestart"
+                value={this.props.calendarprops.rangestart}
+                onChange={this.onchange}
+              />
+               <span style={headfontStyle}>To </span>
+               <input
+                style={inputStyle}
+                className={`${prefixCls}-end-year-input`}
+                type="number" min="1000" max="9999"
+                name="rangeend"
+                value={this.props.calendarprops.rangeend}
+                onChange={this.onchange}
+              />
+              </div>
+            )}
+              {showIf(this.props.calendarprops.rangemode && (this.props.calendarprops.rangetype == "slider" || this.props.calendarprops.rangetype == "slider-text"),
               <InputRange           
               maxValue={this.state.maxrange}
               minValue={this.state.minrange}
@@ -130,7 +152,9 @@ height:'30px'
               onChange={value => this.setState({ valuerange: value })}
               onChangeComplete={this.onrangechange} />
             )}
-            {showIf(this.props.calendarprops.rangemode && this.props.calendarprops.rangetype !== "slider",
+          
+
+            {/* {showIf(this.props.calendarprops.rangemode && this.props.calendarprops.rangetype !== "slider",
               <span style={headfontStyle}>From </span>
             )}
             {showIf(this.props.calendarprops.rangemode && this.props.calendarprops.rangetype !== "slider",
@@ -153,7 +177,7 @@ height:'30px'
                 name="rangeend"
                 value={this.props.calendarprops.rangeend}
                 onChange={this.onchange}
-              />)}
+              />)} */}
              {showIf(!this.props.calendarprops.rangemode,
             <a
               className={`${prefixCls}-prev-year-btn`}
