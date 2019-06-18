@@ -273,6 +273,7 @@ const Calendar = createReactClass({
               onSelect={this.onDateTableSelect}
               disabledDate={disabledDate}
               showWeekNumber={props.showWeekNumber}
+              calendarprops = {this.props.calendarprops}
             />
           </div>
 

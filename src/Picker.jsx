@@ -205,6 +205,7 @@ const Picker = createReactClass({
       type={this.props.type}
       selectedvalue={this.props.selectedvalue}
       onQuarterSelect={this.props.onQuarterSelect}
+      onRangeSelect={this.props.onRangeSelect}
       calendarprops = {this.props.calendarprops}
       popupPlacement={placement}
       action={(disabled && !state.open) ? [] : ['click']}
